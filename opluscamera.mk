@@ -27,8 +27,7 @@ PRODUCT_COPY_FILES += \
     $(OPLUS_CAMERA_PATH)/configs/framework/androidx.camera.extensions.impl.jar:$(TARGET_COPY_OUT_SYSTEM_EXT)/framework/androidx.camera.extensions.impl.jar \
     $(OPLUS_CAMERA_PATH)/configs/sysconfig/hiddenapi-package-oplus-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/hiddenapi-package-oplus-whitelist.xml
 
-# Gallery's ODNN retouch path dlopens QNN libraries by basename. Install the
-# OP15 QNN runtime in system_ext and place real copies in Gallery's native lib dir.
+# OP15 QNN runtime used by stock camera processing paths.
 PRODUCT_PACKAGES += \
     libQnnHtp_gallery_system_ext \
     libQnnHtpPrepare_gallery_system_ext \
@@ -36,19 +35,13 @@ PRODUCT_PACKAGES += \
     libQnnHtpV81CalculatorStub_gallery_system_ext \
     libQnnSaver_gallery_system_ext \
     libQnnSystem_gallery_system_ext \
-    libQnnHtp_gallery_app_lib \
-    libQnnHtpPrepare_gallery_app_lib \
-    libQnnHtpV81Stub_gallery_app_lib \
-    libQnnHtpV81CalculatorStub_gallery_app_lib \
-    libQnnSaver_gallery_app_lib \
-    libQnnSystem_gallery_app_lib \
     libNativeWinBuffExchange_camera_app_lib \
     libHeifEncoderWrapper_camera_app_lib \
     libHeifWinBufExchg-jni
 
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.vendor.camera.privapp.list=com.oplus.camera,com.oneplus.gallery \
+    persist.vendor.camera.privapp.list=com.oplus.camera \
     persist.camera.override_enable=true \
     persist.camera.override_preview_hdr_support=false \
     persist.sys.feature.dolby_vision=1 \
@@ -66,11 +59,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.build.version.oplusrom.display=16.0.8 \
     ro.build.version.oplusrom.confidential=V16.1.0 \
     ro.com.google.lens.oem_camera_package=com.oplus.camera \
-    ro.com.google.lens.oem_image_package=com.oneplus.gallery,com.oplus.screenshot \
+    ro.com.google.lens.oem_image_package=com.oplus.screenshot \
     ro.camerax.extensions.enabled=true \
     ro.oplus.fusionlight=true \
     ro.oplus.camera.defercap.support=1 \
-    ro.oplus.system.gallery.name=com.oneplus.gallery \
     ro.oplus.system.camera.name=com.oplus.camera \
     ro.oplus.camera.defercap.all.quick.visible.support=1 \
     ro.oplus.camera.livephoto.support=1 \
